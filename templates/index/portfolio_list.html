@@ -1,0 +1,56 @@
+{% extends 'index/base2.html' %}
+{% load static thumbnail %}
+{% block title %}{% endblock %}
+{% block content %}
+    <section class="page-header-section set-bg" data-setbg="{% static 'img/header-bg.jpg' %}">
+        <div class="container">
+            <h1 class="header-title">Нами выполненные работы<span>.</span></h1>
+        </div>
+    </section>
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8"></div>
+            <div class="col-md-4"><a href="{% url 'portfolio_all' %}">
+                <button class="btn btn-danger" style="margin-bottom: 20px">Посмотреть все выполненние проекты одним
+                    списком
+                </button>
+            </a></div>
+            {% for project in portfolio %}
+                <br>
+                <div class="row">
+                    <div class="col-md-12 post">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr class="border-danger"/>
+                            </div>
+                        </div>
+                        <div class="row post-content">
+                            <div class="col-md-4">
+                                <a href="{% url 'portfolio_detail' project.slug %}">
+                                    {% thumbnail project.photo "x800" as im %}
+                                        <a class="thumbnail" href="{% url 'portfolio_detail' project.slug %}" >
+                                            <img class="img-responsive"
+                                                 src="{{ im.url }}">
+                                        </a>
+                                    {% empty %}
+                                        {% static 'img/no_Image.png' %}
+                                    {% endthumbnail %}
+
+
+                            </div>
+                            <div class="col-md-8">
+                                <h3><strong><a href="{% url 'portfolio_detail' project.slug %}"
+                                               class="post-title">{{ project.title }}</a></strong></h3>
+                                {{ project.body|truncatewords:45|safe }}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'index/base2.html' %}
+{% load static thumbnail %}
+{% block title %}{{ service.title }}{% endblock %}
+{% block content %}
+    <section class="page-header-section set-bg" data-setbg="{% static 'img/header-bg.jpg' %}">
+        <div class="container">
+            <h1 class="header-title">Сфера деятельности<span>.</span></h1>
+        </div>
+    </section>
+    <!-- Service section start -->
+    <section class="service-section spad ">
+        <div class="container">
+            <div class="row">
+                {% for services in service %}
+                    <div class="col-lg-6 col-md-6 ">
+                        <div class="service-box service_ramka">
+                            <div class="sb-icon ">
+
+                                <div class="sb-img-icon ">
+                                    {% if services.photo %}
+
+                                            <img src="{{ services.photo.url }}">
+
+                                    {% else %}
+                                        {% static "img/no_Image.png" %}
+
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <h3>{{ services.title }}</h3>
+                            {{ services.body|truncatewords:25|safe }}
+                            <br>
+                            <a href="{% url 'service_detail' services.slug %}" class="readmore ">Подробнее</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- Service section end -->
+{% endblock %}

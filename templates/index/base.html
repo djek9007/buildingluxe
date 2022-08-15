@@ -1,0 +1,193 @@
+{% load static thumbnail%}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Buildingluxe{% block title %}{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="BuildingLuxe">
+    <meta name="keywords" content="проектирование, архитектура, чертежи, компания">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="yandex-verification" content="e2ceae8255230ae3" />
+    <!-- Favicon -->
+    {% include 'index/css.html' %}
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(53498794, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/53498794" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</head>
+<body>
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+<!-- Header section start -->
+{% include 'index/menu.html' %}
+<!-- Header section end -->
+
+{% block content %}
+    <!-- Hero section start -->
+    <section class="hero-section">
+        <!-- left social link ber -->
+        <div class="left-bar">
+            <div class="left-bar-content">
+                <div class="social-links">
+                    <a href="https://instagram.com/buildingluxeofficial?utm_source=ig_profile_share&igshid=r19p3k0l4sgm" ta><i class="fa fa-instagram"></i></a>
+                    <a href="{% url 'contact' %}"><i class="fa fa-envelope"></i></a>
+
+                </div>
+            </div>
+        </div>
+        <!-- hero slider area -->
+        <div class="hero-slider">
+
+           <div class="hero-slide-item set-bg" data-setbg="{%static 'img/bg6.jpg' %}">
+
+			</div>
+
+            <div class="hero-right-text">архитектура</div>
+    </section>
+    <!-- Hero section end -->
+
+
+    <!-- Intro section start -->
+    <section class="intro-section pt100 pb50">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 intro-text mb-5 mb-lg-0">
+                    <h2 class="sp-title">{{ about.title }}<span>BuildingLuxe</span></h2>
+                    {{ about.body|truncatewords:38|safe }}
+                    <br/>
+                    <a href="{% url 'about' %}" class="site-btn sb-dark ">Подробнее</a>
+                </div>
+                <div class="col-lg-5 pt-4">
+                    <img src="{% static 'img/intro.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Intro section end -->
+
+
+    <!-- Service section start -->
+    <section class="service-section spad">
+        <div class="container">
+            <div class="section-title">
+                <h2>Сфера деятельности</h2>
+            </div>
+            <div class="row">
+                {% for services in service %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="service-box">
+                            <div class="sb-icon">
+
+                                <div class="sb-img-icon">
+                                    {% if services.photo %}
+                                        <img src="{{ services.photo.url }}" alt="">
+                                    {% else %}
+                                        {% static "img/no_image.png" %}{% endif %}
+                                </div>
+                            </div>
+                            <a href="{% url 'service_detail' services.slug %}"><h3>{{ services.title }}</h3></a>
+                            {{ services.body|truncatewords:25|safe }}
+                            <hr>
+                            <a href="{% url 'service_detail' services.slug %}" class="readmore">Подробнее</a>
+
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- Service section end -->
+
+
+
+    <!-- CTA section start -->
+    <section class="cta-section pt100 pb50">
+        <div class="cta-image-box"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 pl-lg-0 offset-lg-5 cta-content">
+                    <h2 class="sp-title">{{ usluga.title }} </h2>
+                    {{ usluga.body|safe }}
+                    <div class="cta-icons">
+                        <div class="cta-img-icon">
+                            <img src="{% static 'img/icon/light/1.png' %}" alt="">
+                        </div>
+                        <div class="cta-img-icon">
+                            <img src="{% static 'img/icon/light/2.png' %}" alt="">
+                        </div>
+                        <div class="cta-img-icon">
+                            <img src="{% static 'img/icon/color/3.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CTA section end -->
+
+
+    <!-- Milestones section Start -->
+    <section class="milestones-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="milestone">
+                        <h2>15</h2>
+                        <p>лет безупречной <br>Репутации</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="milestone">
+                        <h2>30</h2>
+                        <p>Крупных <br>проектов</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Milestones section end -->
+
+
+    <div class="projects-section pb50">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2>Нами выполненные некоторые проекты</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+           <!-- Projects section end -->
+    {% include 'index/portfolio_list_for_index.html' %}
+    <!-- Projects section end -->
+    <!-- Footer section start -->
+    <footer class="footer-section">
+        <div class="copyright">Copyright &copy;All rights reserved. <br>BuildingLuxe</div>
+        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+    </footer>
+    <!-- Footer section end -->
+
+
+
+
+    <!--====== Javascripts & Jquery ======-->
+{% include 'index/script.html' %}
+    </body>
+    </html>
+{% endblock %}

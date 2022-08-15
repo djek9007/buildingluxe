@@ -1,0 +1,34 @@
+{% load static thumbnail %}
+<div class="container">
+    <div class="row">
+        {% for pt in portfolio %}
+            <div class="col-sm-4">
+                <!--Card-->
+                <div class="card">
+
+                    <!--Card image-->
+                    {% if pt.photo %}
+                        {% thumbnail pt.photo "x300" as im %}
+                            <img  src="{{ im.url }}">
+                            {% empty %}{% static 'img/no_Image.png' %}
+                        {% endthumbnail %}
+                    {% endif %}
+
+
+                    <!--Card content-->
+                    <div class="card-body py-1 ">
+                        <!--Title-->
+                        <a href="{% url 'portfolio_detail' pt.slug %}"><h4 class="card-title p-2">{{ pt.title }}</h4></a>
+                    </div>
+
+                </div>
+                <!--/.Card-->
+
+     <br>
+            </div>
+
+
+
+        {% endfor %}
+    </div>
+</div>

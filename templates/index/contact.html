@@ -1,0 +1,47 @@
+
+{% extends 'index/base2.html' %}
+{% include "django/forms/widgets/input.html" %}
+
+{% load static thumbnail %}
+{% block title %}{{ contact.title}}{% endblock %}
+{% block content %}
+        	<section class="page-header-section set-bg" data-setbg="{% static 'img/header-bg.jpg' %}">
+		<div class="container">
+			<h1 class="header-title">{{ contact.title}}<span>.</span></h1>
+		</div>
+	</section>
+<!-- Page section start -->
+	<section class="page-section pt100">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5 contact-info mb-5 mb-lg-0">
+					{{ contact.body|safe }}
+					</div>
+                    
+				<div class="col-md-5">
+				    {% if sent %}
+                        <p>Спасибо за обращение! Ваша заявка успешно отправлено</p>
+                    {% else %}
+					<form action="" class="contact-form" method="post" >
+                        {% csrf_token %}
+                        {{ form.name }}
+						{{ form.email }}
+						{{form.phone }}
+                        {{ form.message }}
+						<input class="site-btn sb-dark" type="submit" value="Отправить запрос">
+
+					</form>
+				</div>
+                    {% endif %}
+
+			</div>
+		</div>
+
+
+	</section>
+	<!-- Page section end -->
+<div class="map-area" id="map-canvas">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2502.82648999238!2d71.51038035165728!3d51.14855067947749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x42458183e4f29c7b%3A0x97d7800bceb8b051!2z0YPQuy4g0JbQsNGA0LrQtdC90YIgMjYsINCQ0YHRgtCw0L3QsCAwMTAwMDA!5e0!3m2!1sru!2skz!4v1552907584553" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+
+{% endblock %}

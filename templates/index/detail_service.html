@@ -1,0 +1,31 @@
+{% extends 'index/base2.html' %}
+{% load static thumbnail %}
+
+{% block title %}{{ service.title }}{% endblock %}
+{% block content %}
+	<!-- Page header section start -->
+	<section class="page-header-section set-bg" data-setbg="{% static 'img/header-bg.jpg' %}">
+		<div class="container">
+			<h1 class="header-title">{{ service.title }}<span>.</span></h1>
+		</div>
+	</section>
+	<!-- Page header section end -->
+	<!-- Intro section start -->
+	<section class="intro-section spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-10 intro-text">
+
+					<div class="row">
+						<div class="col-md-12">
+                            {{ service.body|safe }}
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	<!-- Intro section end -->
+{% endblock %}

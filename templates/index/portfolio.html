@@ -1,0 +1,29 @@
+{% extends 'index/base2.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block content %}
+    <!-- Projects section start -->
+	<div class="projects-section pb50">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="section-title">
+						<h2>Нами выполненные проекты</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="projects-carousel" class="projects-slider">
+            {% for projects in project %}
+			<div class="single-project " data-setbg="img/projects/2.jpg">
+				<div class="project-content">
+					<h2>{{ projects.title }} <br> Building</h2>
+					<p>{{ projects.publish|date }}</p>
+					<a href="#" class="seemore">See Project </a>
+				</div>
+			</div>
+            {% endfor %}
+		</div>
+	</div>
+	<!-- Projects section end -->
+{% endblock %}

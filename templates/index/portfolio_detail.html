@@ -1,0 +1,53 @@
+{% extends 'index/base2.html' %}
+{% load static thumbnail%}
+{% block title %}{% endblock %}
+{% block content %}
+    <section class="page-header-section set-bg" data-setbg="{% static 'img/header-bg.jpg' %}">
+        <div class="container">
+            <h1 class="header-title">{{ portfolio.title }}<span>.</span></h1>
+        </div>
+    </section>
+    <section class="intro-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 intro-text">
+                    <div class="row">
+                        <div class="col-md-12">
+                            {{ portfolio.body|safe }}
+                        </div>
+                    </div>
+
+            </div>
+                    <div class="row">
+{% for photo in photoitems %}
+    <div class="col-lg-4 col-md-4 col-xs-6 mt-5">
+    {% thumbnail photo.image "x800" as im %}
+        <a class="thumbnail" href="{{ im.url }}" data-lightbox="imgGLR" >
+    <img class="img-responsive" border="0" height="100%" width="100%" src="{{ im.url }}">
+        </a>
+{% endthumbnail %}
+    </div>
+
+{% endfor %}
+                </div>
+        </div>
+
+    </section>
+{#<div align=right><a class="close" title="Закрыть" onclick="document.getElementById('controls').style.display='none';">X</a></div>#}
+{#<div class="container">#}
+{##}
+{#      <div class="row">#}
+{#{% for photo in photoitems %}#}
+{#           	<div class="col-lg-3 col-md-4 col-xs-6 thumb">#}
+{#                <a class="thumbnail" href="{{ photo.thumb.url }}" data-lightbox="imgGLR" >#}
+{#                    <img class="img-responsive" border="0" height="300" src="{{ photo.image.url }}" width="100%" /></a>#}
+{#            </div>#}
+{#{% endfor %}#}
+{#	</div>#}
+{##}
+{#</div>#}
+
+
+
+
+{% endblock %}

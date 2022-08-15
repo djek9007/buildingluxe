@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>Buildingluxe{% block title %}{% endblock %}</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="BuildingLuxe">
+	<meta name="keywords" content="проектирование, архитектура, чертежи, компания">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="yandex-verification" content="e2ceae8255230ae3" />
+	{% include 'index/css.html' %}
+
+</head>
+
+	{% include 'index/menu.html' %}
+
+<body>
+{% block content %}
+
+
+{% endblock %}
+	<!-- Page Preloder -->
+
+	<!-- Projects section end -->
+		<!-- Footer section start -->
+	<footer class="footer-section">
+     <div class="copyright">Copyright &copy;All rights reserved.  <br>BuildingLuxe</div>
+    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+	</footer>
+	<!-- Footer section end -->
+
+
+{% include 'index/script.html' %}
+
+
+</body>
+</html>

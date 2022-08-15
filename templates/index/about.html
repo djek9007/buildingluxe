@@ -1,0 +1,42 @@
+{% extends 'index/base2.html' %}
+{% load static thumbnail %}
+{% block title %}{{ about.title }}{% endblock %}
+{% block content %}
+<!-- Page header section start -->
+<section class="page-header-section set-bg" data-setbg="{% static 'img/header-bg.jpg' %}">
+    <div class="container">
+        <h1 class="header-title">{{ about.title }}<span>.</span></h1>
+    </div>
+</section>
+<!-- Page header section end -->
+<!-- Intro section start -->
+<section class="intro-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 intro-text">
+                <div class="row">
+                    <div class="col-md-9">
+                        {{ about.body|safe }}
+                    </div>
+                    <div class="col-md-3 pt-md-3">
+                        <div class="col-md-12">
+                            <a class="thumbnail"  href="{% static 'img/licen.jpg' %}" data-lightbox="imgGLR">
+                                <img class="img-responsive" border="0" height="100%" src="{% static 'img/licen.jpg' %}"
+                                     width="100%"/></a>
+                            <a class="thumbnail"  href="{% static 'img/Erzhan.png' %}" data-lightbox="imgGLR">
+                                <img class="img-responsive" border="0" height="100%" src="{% static 'img/Erzhan.png' %}"
+                                     width="100%"/></a>
+                        </div>
+
+                                     <!--<img src="{% static 'img/licen.jpg' %}" alt="">-->
+                        <!--<img src="{% static 'img/Erzhan.png' %}" alt="">-->
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Intro section end -->
+{% endblock %}
